@@ -1,1 +1,1 @@
-# Deep-learning-RNNL-STM-
+## 딥러닝 LSTM을 활용하여 가상화폐인 쿼크체인의 가격을 예측하는 프로젝트 진행
