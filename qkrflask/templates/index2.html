@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>차트 표시</title>
+    <!-- Plotly.js 스크립트 추가 -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <button id="show-chart-button">차트 표시</button>
+    <div id="chart-container">
+        <!-- 차트가 여기에 표시될 것입니다. -->
+    </div>
+
+    <script>
+        // 차트 표시 로직 추가
+        function show_Chart() {
+            // 엑셀 파일에서 차트 데이터를 가져오는 요청을 보냅니다.
+            fetch('/show_chart')
+                .then(response => response.json())
+                .then(chartData => {
+                    // 차트 데이터를 파싱하고 차트를 생성하여 컨테이너에 추가합니다.
+                    const chartContainer = document.getElementById('chart-container');
+                    const parsedChartData = JSON.parse(chartData);
+
+                    Plotly.newPlot(chartContainer, parsedChartData);
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        document.getElementById('show-chart-button').addEventListener('click', function() {
+            show_Chart();
+        });
+    </script>
+</body>
+</html>
